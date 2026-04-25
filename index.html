@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BioNutri Mar — Macronutrientes dos Organismos Marinhos Brasileiros</title>
-  <meta name="description" content="BioNutri Mar: banco de dados nutricional de organismos marinhos do litoral brasileiro. Macronutrientes por 100g para peixes e algas. Dados TACO, TBCA, USDA e literatura científica brasileira." />
+  <meta name="description" content="BioNutri Mar: banco de dados nutricional de organismos marinhos do litoral brasileiro. Macronutrientes por 100g para peixes, algas, crustáceos e cefalópodes. Dados TACO, TBCA, USDA e literatura científica brasileira." />
   <link rel="preconnect" href="https://fonts.bunny.net" />
   <link href="https://fonts.bunny.net/css?family=source-serif-4:400,600,700|dm-sans:400,500,600" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -48,7 +48,7 @@
       <p class="hero-sub">Macronutrientes dos Organismos Marinhos Brasileiros</p>
       <div class="hero-stats">
         <div class="stat-card">
-          <span class="stat-val">77</span>
+          <span class="stat-val">94</span>
           <span class="stat-lbl">Organismos</span>
         </div>
         <div class="stat-card">
@@ -76,12 +76,12 @@
         <div class="sobre-texto">
           <h2>Sobre o BioNutri Mar</h2>
           <p class="sobre-lead">O <strong>BioNutri Mar</strong> é um banco de dados nutricional de acesso público dedicado aos organismos marinhos do litoral brasileiro, desenvolvido com finalidade educacional e de divulgação científica.</p>
-          <p>O projeto compila e organiza dados de macronutrientes — energia, proteínas, carboidratos e lipídios — de espécies de peixes e algas marinhas encontradas ou comercializadas no litoral do Brasil, com base nas principais tabelas de composição de alimentos nacionais e internacionais: <strong>TACO</strong> (UNICAMP/NEPA), <strong>TBCA</strong> (USP/CAPES), <strong>USDA FoodData Central</strong> e literatura científica brasileira revisada.</p>
+          <p>O projeto compila e organiza dados de macronutrientes — energia, proteínas, carboidratos e lipídios — de alimentos marinhos do litoral brasileiro, incluindo peixes, algas, cefalópodes (lulas e polvos) e crustáceos (camarões e lagostas), com base nas principais tabelas de composição de alimentos nacionais e internacionais: <strong>TACO</strong> (UNICAMP/NEPA), <strong>TBCA</strong> (USP/CAPES), <strong>USDA FoodData Central</strong> e literatura científica brasileira revisada.</p>
           <p>O site permite consultar, filtrar, ordenar e comparar visualmente a composição nutricional dos organismos, com recursos de busca por nome popular ou científico, filtros por perfil dietético, família taxonômica e fonte dos dados, além de gráficos interativos de ranking, dispersão e comparação radar.</p>
-          <p>O banco de dados está em expansão continuada, com previsão de inclusão de novos grupos de organismos marinhos comestíveis do litoral brasileiro, como crustáceos, moluscos e equinodermos.</p>
+          <p>O banco de dados está em expansão continuada, com inclusão progressiva de novos grupos como moluscos bivalves, equinodermos e outros frutos do mar de interesse nutricional e comercial no Brasil.</p>
           <div class="sobre-tags">
-            <span class="sobre-tag">🐟 62 espécies de peixes</span>
-            <span class="sobre-tag">🌿 15 espécies de algas</span>
+            <span class="sobre-tag">🐟 Peixes e algas marinhas</span>
+            <span class="sobre-tag">🦐 Crustáceos e cefalópodes</span>
             <span class="sobre-tag">🔬 Dados científicos verificados</span>
             <span class="sobre-tag">🇧🇷 Litoral brasileiro</span>
             <span class="sobre-tag">📊 Acesso público e gratuito</span>
@@ -89,7 +89,7 @@
         </div>
         <div class="sobre-visual">
           <div class="sobre-card-stat">
-            <span class="sobre-num">77</span>
+            <span class="sobre-num">94</span>
             <span class="sobre-desc">organismos catalogados</span>
           </div>
           <div class="sobre-card-stat">
@@ -101,7 +101,7 @@
             <span class="sobre-desc">bases de dados consultadas</span>
           </div>
           <div class="sobre-card-stat">
-            <span class="sobre-num">2</span>
+            <span class="sobre-num">4</span>
             <span class="sobre-desc">grupos de organismos</span>
           </div>
         </div>
@@ -119,9 +119,11 @@
         </div>
         <!-- Filtro principal: Tipo de organismo -->
         <div class="tipo-filter-group" role="group" aria-label="Filtrar por tipo">
-          <button class="tipo-btn active" data-tipo="all">🌊 Todos</button>
+          <button class="tipo-btn active" data-tipo="all">🌊 Todos (94)</button>
           <button class="tipo-btn" data-tipo="peixe">🐟 Peixes (62)</button>
           <button class="tipo-btn" data-tipo="alga">🌿 Algas (15)</button>
+          <button class="tipo-btn" data-tipo="cefalopode">🦑 Cefalópodes (10)</button>
+          <button class="tipo-btn" data-tipo="crustaceo">🦞 Crustáceos (7)</button>
         </div>
         <!-- Filtro de perfil dietético -->
         <div class="filter-group" role="group" aria-label="Filtrar por perfil dietético">
@@ -152,6 +154,14 @@
             &mdash;
             <input type="range" id="protSliderMax" min="0" max="30" step="1" value="30" aria-label="Proteína máxima">
             <span id="protValMax">30g</span>
+          </label>
+          <label class="slider-group">
+            Carboidratos (g):
+            <input type="range" id="carbSliderMin" min="0" max="85" step="1" value="0" aria-label="Carboidrato mínimo">
+            <span id="carbValMin">0g</span>
+            &mdash;
+            <input type="range" id="carbSliderMax" min="0" max="85" step="1" value="85" aria-label="Carboidrato máximo">
+            <span id="carbValMax">85g</span>
           </label>
         </div>
         <div style="margin-top:8px">
@@ -250,11 +260,11 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           </div>
           <h3>Low-Carb / Cetogênica</h3>
-          <p>A maioria dos peixes e algas listados apresenta carboidratos muito baixos, tornando esses organismos marinhos excelentes opções para dietas com restrição de carboidratos.</p>
+          <p>Camarões, lagostas e a maioria dos peixes apresentam carboidratos muito baixos (&lt;2g/100g), sendo os crustáceos e cefalópodes excelentes opções para dietas cetogênicas.</p>
           <div class="top-picks">
+            <span class="pick-badge">⭐ Camarão-rosa (0,5g carbo)</span>
             <span class="pick-badge">⭐ Dourado (0,4g lip)</span>
-            <span class="pick-badge">⭐ Bonito pintado (1,0g lip)</span>
-            <span class="pick-badge">⭐ Rainha (1,3g lip)</span>
+            <span class="pick-badge">⭐ Lula-pota (1,4g carbo)</span>
           </div>
         </div>
 
@@ -263,11 +273,11 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
           </div>
           <h3>Dieta Hiperproteica</h3>
-          <p>Espécies com maior concentração de proteínas por 100g — ideais para atletas, ganho de massa muscular e reabilitação nutricional.</p>
+          <p>Espécies com maior concentração de proteínas por 100g — ideais para atletas, ganho de massa muscular e reabilitação nutricional. Lagostas e camarões lideram entre os crustáceos.</p>
           <div class="top-picks">
             <span class="pick-badge green">🏆 Tainha (25,2g)</span>
-            <span class="pick-badge green">🏆 Xaru (23,1g)</span>
-            <span class="pick-badge green">🏆 Olho de cão (23,3g)</span>
+            <span class="pick-badge green">🏆 Lagosta-vermelha (20,6g)</span>
+            <span class="pick-badge green">🏆 Camarão-rosa (18,6g)</span>
           </div>
         </div>
 
@@ -276,7 +286,7 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
           </div>
           <h3>Rico em Ômega-3</h3>
-          <p>Espécies com maior teor de lipídios totais — indica maior presença de ácidos graxos poli-insaturados, especialmente EPA e DHA, com efeitos cardioprotetores.</p>
+          <p>Espécies com maior teor de lipídios totais — indica maior presença de ácidos graxos poli-insaturados, especialmente EPA e DHA. Peixes gordos lideram; polvos e lulas têm baixo teor lipídico.</p>
           <div class="top-picks">
             <span class="pick-badge blue">🐟 Salmão (9,7g)</span>
             <span class="pick-badge blue">🐟 Xerelete (7,9g)</span>
@@ -289,11 +299,37 @@
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
           </div>
           <h3>Controle Calórico</h3>
-          <p>Espécies com menor valor energético — ideais para dietas hipocalóricas sem abrir mão do aporte proteico elevado.</p>
+          <p>Espécies com menor valor energético — ideais para dietas hipocalóricas sem abrir mão do aporte proteico. Lulas e camarão-sete-barbas estão entre as opções mais magras do banco.</p>
           <div class="top-picks">
+            <span class="pick-badge orange">🔥 Lula-europeia (79 kcal)</span>
+            <span class="pick-badge orange">🔥 Camarão-sete-barbas (76 kcal)</span>
             <span class="pick-badge orange">🔥 Dourado (84 kcal)</span>
-            <span class="pick-badge orange">🔥 Rainha (100 kcal)</span>
-            <span class="pick-badge orange">🔥 Olho de cão (95 kcal)</span>
+          </div>
+        </div>
+
+        <div class="dieta-card card-crustaceos" style="--card-color:#7b1a1a;">
+          <div class="dieta-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c-2 0-4 1-5 3L3 9l2 2-2 2 2 2-2 2 3 2c1 2 3 3 5 3s4-1 5-3l3-2-2-2 2-2-2-2 2-2-4-4c-1-2-3-3-5-3z"/></svg>
+          </div>
+          <h3>Crustáceos — Proteína Magra</h3>
+          <p>Camarões e lagostas são fontes excepcionais de proteína com pouquíssima gordura e carboidratos. Ideais para recomposição muscular e dietas de emagrecimento.</p>
+          <div class="top-picks">
+            <span class="pick-badge" style="background:#7b1a1a22;">🦞 Lagosta-vermelha (20,6g prot)</span>
+            <span class="pick-badge" style="background:#7b1a1a22;">🦐 Camarão-rosa (18,6g prot)</span>
+            <span class="pick-badge" style="background:#7b1a1a22;">🦐 Camarão-cinza (17,8g prot)</span>
+          </div>
+        </div>
+
+        <div class="dieta-card card-cefalopodes" style="--card-color:#3d0050;">
+          <div class="dieta-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3c-3 0-6 2-7 5l-1 3h2l-1 3h2l-1 3 3-1v2l2-2 2 2v-2l3 1-1-3h2l-1-3h2l-1-3c-1-3-4-5-7-5z"/></svg>
+          </div>
+          <h3>Cefalópodes — Proteína e Versatilidade</h3>
+          <p>Lulas e polvos oferecem proteína de alto valor biológico com baixo teor de gordura. A Lula-pota destaca-se pelo maior teor proteico entre os cefalópodes (17g/100g).</p>
+          <div class="top-picks">
+            <span class="pick-badge" style="background:#3d005022;">🦑 Lula-pota (17,0g prot)</span>
+            <span class="pick-badge" style="background:#3d005022;">🦑 Lula-longa (15,8g prot)</span>
+            <span class="pick-badge" style="background:#3d005022;">🐙 Polvo-comum (14,9g prot)</span>
           </div>
         </div>
 
@@ -353,343 +389,28 @@
         <div class="footer-autoria">
           <p class="footer-label">Elaboração</p>
           <p class="footer-author">Vitor Vasconcelos · Nutricionista</p>
+          <p class="footer-label" style="margin-top:10px">Patrocinador</p>
+          <p class="footer-sponsor">Instituto O3-BioTech</p>
         </div>
         <div class="footer-info">
           <p>BioNutri Mar — Banco de dados nutricional de organismos marinhos do litoral brasileiro.<br>Dados compilados de fontes governamentais e científicas para fins educacionais e de divulgação científica. Uso livre mediante citação da fonte.</p>
-          <p class="footer-date">Versão 2.0 · Abril de 2026</p>
+          <p class="footer-contact">📧 <a href="mailto:molgran@hotmail.com">molgran@hotmail.com</a></p>
+          <p class="footer-date">Versão 2.1 · Abril de 2026</p>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- Contador de visitantes (Flag Counter — gratuito, sem cadastro) -->
+  <div id="visitor-counter" style="text-align:center;padding:18px 0 10px;background:rgba(0,0,0,0.18);">
+    <a href="https://www.flagcounter.com" target="_blank" rel="noopener">
+      <img src="https://s01.flagcounter.com/count2/BioNutriMar/bg_003D57/txt_FFFFFF/border_006080/columns_4/maxflags_16/viewers_0/labels_1/pageviews_1/flags_0/percent_0/"
+           alt="Contador de visitantes — BioNutri Mar"
+           style="border:0;border-radius:8px;opacity:0.85;max-width:280px"
+           loading="lazy">
+    </a>
+  </div>
+
   <script src="app.js"></script>
-<script data-pplx-inline-edit>
-(function () {
-  if (window === window.top) return;
-
-  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
-  const MAX_FONT_BYTES = 500 * 1024;
-  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
-  let scrollForwarding = false;
-  let scrollRaf = 0;
-  let trustedTopOrigin = null;
-
-  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
-  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
-  // across multiple labels.
-  function matchesAllowedOrigin(origin) {
-    if (!origin) return false;
-    for (const entry of allowedParentOrigins) {
-      if (!entry.includes("*")) {
-        if (entry === origin) return true;
-        continue;
-      }
-      const pattern = new RegExp(
-        "^" +
-          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
-          "$",
-      );
-      if (pattern.test(origin)) return true;
-    }
-    return false;
-  }
-
-  // Trust decision: when the sender is same-origin-visible (event.origin is a
-  // real origin like https://www.perplexity.ai) we trust event.origin directly.
-  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
-  // broker's stamped `parentOrigin` to identify the top window. The fallback
-  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
-  // on the response path (see postToTrustedTop) to ensure replies can't be
-  // delivered to anyone but the actual top window of that claimed origin.
-  function getTrustedParentOrigin(event) {
-    const forwardedParentOrigin =
-      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
-    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
-    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
-  }
-
-  // All responses go to window.top with targetOrigin = the allowlisted origin.
-  // An attacker that iframes us inside their own null-origin broker can claim
-  // any parentOrigin they like, but the browser will drop the reply whenever
-  // the real top's origin doesn't match — so the screenshot never leaves.
-  function postToTrustedTop(message) {
-    if (!trustedTopOrigin) return;
-    try {
-      window.top.postMessage(message, trustedTopOrigin);
-    } catch (_error) {}
-  }
-
-  function inlineAll(original, clone) {
-    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
-
-    try {
-      const computedStyle = getComputedStyle(original);
-      // cssText on a computed style is the serialized declaration in modern
-      // Chromium/Safari — a single read beats enumerating ~400 longhand
-      // properties. Firefox returns "" here, so we fall back on empty.
-      const serialized = computedStyle.cssText;
-      if (serialized) {
-        clone.style.cssText = serialized;
-      } else {
-        const parts = new Array(computedStyle.length);
-        for (let index = 0; index < computedStyle.length; index += 1) {
-          const property = computedStyle[index];
-          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
-        }
-        clone.style.cssText = parts.join("");
-      }
-    } catch (_error) {}
-
-    const originalChildren = original.children;
-    const clonedChildren = clone.children;
-    for (
-      let index = 0;
-      index < originalChildren.length && index < clonedChildren.length;
-      index += 1
-    ) {
-      inlineAll(originalChildren[index], clonedChildren[index]);
-    }
-  }
-
-  function extractFontUrl(srcValue) {
-    const matches = [
-      ...srcValue.matchAll(
-        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
-      ),
-    ];
-    if (matches.length === 0) return null;
-    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
-    if (woff2) return woff2[1];
-    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
-    if (woff) return woff[1];
-    return matches[0][1];
-  }
-
-  // Cache resolved font URL -> data URI across captures. Fonts on a page
-  // essentially never change, and a batch run emits multiple captures back to
-  // back — without this we'd refetch + re-base64 every time.
-  const fontDataUriCache = new Map();
-  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
-
-  async function fetchAsDataUri(url) {
-    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
-    let dataUri = null;
-    try {
-      const response = await fetch(url, { mode: "cors", credentials: "omit" });
-      if (response.ok) {
-        const blob = await response.blob();
-        if (blob.size <= MAX_FONT_BYTES) {
-          dataUri = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-              resolve(typeof reader.result === "string" ? reader.result : null);
-            reader.onerror = () => resolve(null);
-            reader.readAsDataURL(blob);
-          });
-        }
-      }
-    } catch (_error) {
-      dataUri = null;
-    }
-    fontDataUriCache.set(url, dataUri);
-    return dataUri;
-  }
-
-  function collectFontFaceRuleTexts() {
-    const rules = [];
-    for (const sheet of document.styleSheets) {
-      let cssRules;
-      try {
-        cssRules = sheet.cssRules;
-      } catch (_error) {
-        continue;
-      }
-      if (!cssRules) continue;
-      for (const rule of cssRules) {
-        const cssText = rule.cssText || "";
-        if (cssText.startsWith("@font-face")) rules.push(cssText);
-      }
-    }
-    return rules;
-  }
-
-  async function buildInlinedFontCss() {
-    const ruleTexts = collectFontFaceRuleTexts();
-    if (ruleTexts.length === 0) return null;
-
-    const resolved = ruleTexts.map((cssText) => {
-      if (!SRC_DECLARATION_RE.test(cssText)) return null;
-      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
-      if (!srcMatch) return null;
-      const url = extractFontUrl(srcMatch[1]);
-      if (!url) return null;
-      try {
-        return { cssText, url: new URL(url, document.baseURI).href };
-      } catch (_error) {
-        return null;
-      }
-    });
-
-    const dataUris = await Promise.all(
-      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
-    );
-
-    const inlined = [];
-    let totalBytes = 0;
-    for (let index = 0; index < resolved.length; index += 1) {
-      const entry = resolved[index];
-      const dataUri = dataUris[index];
-      if (!entry || !dataUri) continue;
-      const approxBytes = dataUri.length * 0.75;
-      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
-      totalBytes += approxBytes;
-      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
-    }
-    return inlined.length > 0 ? inlined.join("\n") : null;
-  }
-
-  function stripExternal(clone) {
-    const images = clone.querySelectorAll("img");
-    for (let index = 0; index < images.length; index += 1) {
-      const src = images[index].getAttribute("src");
-      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
-    }
-
-    const elements = clone.querySelectorAll("*");
-    for (let index = 0; index < elements.length; index += 1) {
-      const style = elements[index].style.cssText;
-      if (style && style.includes("url(")) {
-        elements[index].style.cssText = style.replace(
-          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
-          "none",
-        );
-      }
-    }
-  }
-
-  function emitScroll() {
-    scrollRaf = 0;
-    if (!scrollForwarding) return;
-    postToTrustedTop({
-      type: "INLINE_EDIT_SCROLL",
-      scrollX: window.scrollX,
-      scrollY: window.scrollY,
-    });
-  }
-
-  window.addEventListener(
-    "scroll",
-    function () {
-      if (!scrollForwarding || scrollRaf) return;
-      scrollRaf = requestAnimationFrame(emitScroll);
-    },
-    { passive: true, capture: true },
-  );
-
-  async function handleCaptureRequest(event) {
-    const requestId = event.data.requestId;
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    function postResult(dataUrl) {
-      postToTrustedTop({
-        type: "INLINE_EDIT_SCREENSHOT_RESULT",
-        requestId,
-        dataUrl,
-        scrollX,
-        scrollY,
-      });
-    }
-
-    try {
-      // Wait for any pending web fonts to resolve so both inline metrics and
-      // the @font-face inlining below see the same loaded faces.
-      if (document.fonts && document.fonts.ready) {
-        try {
-          await document.fonts.ready;
-        } catch (_error) {}
-      }
-
-      const clone = document.documentElement.cloneNode(true);
-      inlineAll(document.documentElement, clone);
-
-      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
-      for (let index = 0; index < removedNodes.length; index += 1) {
-        removedNodes[index].remove();
-      }
-
-      stripExternal(clone);
-
-      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
-      // can resolve them — external font URLs aren't fetched during
-      // foreignObject rendering, which would otherwise force a fallback face
-      // and change text metrics.
-      const inlinedFontCss = await buildInlinedFontCss();
-      if (inlinedFontCss) {
-        const styleEl = document.createElement("style");
-        styleEl.textContent = inlinedFontCss;
-        const head = clone.querySelector("head");
-        if (head) head.appendChild(styleEl);
-        else clone.insertBefore(styleEl, clone.firstChild);
-      }
-
-      const html = new XMLSerializer().serializeToString(clone);
-      const svg =
-        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
-        '<foreignObject width="100%" height="100%">' +
-        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
-        `<div style="transform:translate(-${scrollX}px,-${scrollY}px);transform-origin:top left">` +
-        html +
-        "</div></div></foreignObject></svg>";
-      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-      const image = new Image();
-      image.onload = function () {
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext("2d").drawImage(image, 0, 0);
-        postResult(canvas.toDataURL("image/png"));
-      };
-      image.onerror = function () {
-        postResult(null);
-      };
-      image.src = svgUrl;
-    } catch (_error) {
-      postResult(null);
-    }
-  }
-
-  window.addEventListener("message", function (event) {
-    if (!event.data) return;
-    // Only accept messages from the direct parent frame. Blocks sibling /
-    // unrelated-window postMessage senders that could otherwise reach us.
-    if (event.source !== window.parent) return;
-
-    const trustedParentOrigin = getTrustedParentOrigin(event);
-    if (!trustedParentOrigin) return;
-    trustedTopOrigin = trustedParentOrigin;
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
-      scrollForwarding = true;
-      emitScroll();
-      return;
-    }
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
-      scrollForwarding = false;
-      if (scrollRaf) cancelAnimationFrame(scrollRaf);
-      scrollRaf = 0;
-      return;
-    }
-
-    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
-
-    handleCaptureRequest(event);
-  });
-})();
-
-
-</script></body>
+</body>
 </html>

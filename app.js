@@ -1027,8 +1027,119 @@ const ALGAS = [
   }
 ];
 
-// Conjunto unificado (peixes + algas)
-const TODOS = [...PEIXES, ...ALGAS];
+// Conjunto unificado (todos os organismos marinhos)
+// ── CEFALÓPODES (Lulas e Polvos) ─────────────────────────────────────────
+const CEFALOPODES = [
+  { nome:"Lula-argentina", cientifico:"Illex argentinus",
+    kcal:92.0, prot:15.6, carbo:3.08, lip:1.38,
+    fonte:"USDA", fonteDetalhe:"FDC 174223 (squid mixed species, raw)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174223/nutrients",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Ommastrephidae", confianca:"proxy-genero", tipo:"cefalopode" },
+  { nome:"Lula-longa", cientifico:"Doryteuthis plei",
+    kcal:90.0, prot:15.8, carbo:2.80, lip:1.20,
+    fonte:"Literatura", fonteDetalhe:"Scielo NI (2012), Doryteuthis plei, litoral BR",
+    fonteUrl:"https://www.scielo.br",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Loliginidae", confianca:"direto", tipo:"cefalopode" },
+  { nome:"Lula-comum", cientifico:"Doryteuthis sanpaulensis",
+    kcal:90.0, prot:15.8, carbo:2.80, lip:1.20,
+    fonte:"Literatura", fonteDetalhe:"Proxy genero Doryteuthis — Scielo (2012)",
+    fonteUrl:"https://www.scielo.br",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Loliginidae", confianca:"proxy-genero", tipo:"cefalopode" },
+  { nome:"Lula-europeia", cientifico:"Loligo vulgaris",
+    kcal:79.0, prot:13.4, carbo:0.77, lip:1.23,
+    fonte:"Literatura", fonteDetalhe:"IPMA Portugal — Loligo vulgaris, cru, base umida",
+    fonteUrl:"https://www.ipma.pt",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Loliginidae", confianca:"proxy-familia", tipo:"cefalopode" },
+  { nome:"Lula-pota", cientifico:"Dosidicus gigas",
+    kcal:91.0, prot:17.0, carbo:1.40, lip:1.20,
+    fonte:"Literatura", fonteDetalhe:"Abugoch et al. (1999) PubMed — Dosidicus gigas, manto cru",
+    fonteUrl:"https://pubmed.ncbi.nlm.nih.gov",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Ommastrephidae", confianca:"direto", tipo:"cefalopode" },
+  { nome:"Polvo-comum", cientifico:"Octopus vulgaris",
+    kcal:82.0, prot:14.9, carbo:2.20, lip:1.04,
+    fonte:"USDA", fonteDetalhe:"FDC 174218 (octopus, common, raw)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174218/nutrients",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Octopodidae", confianca:"direto", tipo:"cefalopode" },
+  { nome:"Polvo-da-pedra", cientifico:"Octopus insularis",
+    kcal:82.0, prot:14.9, carbo:2.20, lip:1.04,
+    fonte:"USDA", fonteDetalhe:"FDC 174218 (proxy genero Octopus)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174218/nutrients",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Octopodidae", confianca:"proxy-genero", tipo:"cefalopode" },
+  { nome:"Polvo-bravo", cientifico:"Octopus tehuelchus",
+    kcal:82.0, prot:14.9, carbo:2.20, lip:1.04,
+    fonte:"USDA", fonteDetalhe:"FDC 174218 (proxy genero Octopus)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174218/nutrients",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Octopodidae", confianca:"proxy-genero", tipo:"cefalopode" },
+  { nome:"Polvo-longibraço", cientifico:"Octopus maya",
+    kcal:82.0, prot:14.9, carbo:2.20, lip:1.04,
+    fonte:"USDA", fonteDetalhe:"FDC 174218 (proxy genero Octopus)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174218/nutrients",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Octopodidae", confianca:"proxy-genero", tipo:"cefalopode" },
+  { nome:"Polvo-de-areia", cientifico:"Octopus defilippi",
+    kcal:82.0, prot:14.9, carbo:2.20, lip:1.04,
+    fonte:"USDA", fonteDetalhe:"FDC 174218 (proxy genero Octopus)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174218/nutrients",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Octopodidae", confianca:"proxy-genero", tipo:"cefalopode" }
+];
+
+// ── CRUSTÁCEOS (Camarões e Lagostas) ──────────────────────────────────────
+const CRUSTACEOS = [
+  { nome:"Camarão-rosa", cientifico:"Farfantepenaeus brasiliensis",
+    kcal:85.0, prot:18.6, carbo:0.50, lip:0.90,
+    fonte:"Literatura", fonteDetalhe:"Scielo CTA (2008), F. brasiliensis cru, RN",
+    fonteUrl:"https://www.scielo.br",
+    perfil:"hiperproteico", tags:["lowcarb","hiperproteico"],
+    familia:"Penaeidae", confianca:"direto", tipo:"crustaceo" },
+  { nome:"Camarão-branco", cientifico:"Litopenaeus schmitti",
+    kcal:89.0, prot:17.8, carbo:1.10, lip:1.30,
+    fonte:"Literatura", fonteDetalhe:"Proxy genero Litopenaeus — Scielo CR (2012)",
+    fonteUrl:"https://www.scielo.br",
+    perfil:"hiperproteico", tags:["lowcarb","hiperproteico"],
+    familia:"Penaeidae", confianca:"proxy-genero", tipo:"crustaceo" },
+  { nome:"Camarão-sete-barbas", cientifico:"Xiphopenaeus kroyeri",
+    kcal:76.0, prot:15.2, carbo:1.20, lip:1.10,
+    fonte:"Literatura", fonteDetalhe:"Yokohama (2008), Tese USP — X. kroyeri, cru descabecado",
+    fonteUrl:"https://www.teses.usp.br",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Penaeidae", confianca:"direto", tipo:"crustaceo" },
+  { nome:"Camarão-cinza", cientifico:"Litopenaeus vannamei",
+    kcal:89.0, prot:17.8, carbo:1.10, lip:1.30,
+    fonte:"Literatura", fonteDetalhe:"Scielo CR (2012), L. vannamei, musculo cru",
+    fonteUrl:"https://www.scielo.br",
+    perfil:"hiperproteico", tags:["lowcarb","hiperproteico"],
+    familia:"Penaeidae", confianca:"direto", tipo:"crustaceo" },
+  { nome:"Camarão-barba-ruça", cientifico:"Artemesia longinaris",
+    kcal:77.0, prot:15.6, carbo:0.90, lip:0.90,
+    fonte:"TACO", fonteDetalhe:"TACO 4ed item 252 — camarão água salgada cru (proxy Penaeidae)",
+    fonteUrl:"https://www.cfn.org.br",
+    perfil:"proteico", tags:["lowcarb","hiperproteico"],
+    familia:"Penaeidae", confianca:"proxy-familia", tipo:"crustaceo" },
+  { nome:"Lagosta-vermelha", cientifico:"Panulirus argus",
+    kcal:112.0, prot:20.6, carbo:2.36, lip:1.51,
+    fonte:"USDA", fonteDetalhe:"FDC 174211 (spiny lobster, mixed species, raw)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174211/nutrients",
+    perfil:"hiperproteico", tags:["lowcarb","hiperproteico"],
+    familia:"Palinuridae", confianca:"direto", tipo:"crustaceo" },
+  { nome:"Lagosta-verde", cientifico:"Panulirus laevicauda",
+    kcal:112.0, prot:20.6, carbo:2.36, lip:1.51,
+    fonte:"USDA", fonteDetalhe:"FDC 174211 (proxy genero Panulirus)",
+    fonteUrl:"https://fdc.nal.usda.gov/food-details/174211/nutrients",
+    perfil:"hiperproteico", tags:["lowcarb","hiperproteico"],
+    familia:"Palinuridae", confianca:"proxy-genero", tipo:"crustaceo" }
+];
+
+// Conjunto unificado (todos os organismos marinhos)
+const TODOS = [...PEIXES, ...ALGAS, ...CEFALOPODES, ...CRUSTACEOS];
 
 
 // ── ESTADO ────────────────────────────────────────
@@ -1043,9 +1154,11 @@ const state = {
   pageSize: 20,
   protMin: 0,
   protMax: 30,
+  carbMin: 0,
+  carbMax: 85,
   filtroFonte: "all",     // "all" | "TBCA" | "USDA" | "TACO" | "Literatura"
   filtroFamilia: "all",
-  filtroTipo: "all",      // "all" | "peixe" | "alga"
+  filtroTipo: "all",      // "all" | "peixe" | "alga" | "cefalopode" | "crustaceo"
   comparar: [],           // até 2 nomes de espécies para radar
   showAllBar: false,      // toggle Top15 / Todas no gráfico de barras
 };
@@ -1107,6 +1220,13 @@ const FAMILIA_COLORS = {
   "Sargassaceae":    ["#604000", "#f0d8b8"],   // âmbar
   "Dictyotaceae":    ["#3a3000", "#f0e8b8"],   // areia
   "Rhodomelaceae":   ["#600020", "#f0b8c8"],   // vermelho-rosa
+  // Famílias de cefalópodes
+  "Ommastrephidae":  ["#003d60", "#b8d8f0"],   // azul-oceano
+  "Loliginidae":     ["#00506a", "#b8e0f0"],   // azul-anil
+  "Octopodidae":     ["#3d0050", "#e0b8f8"],   // roxo-profundo
+  // Famílias de crustáceos
+  "Penaeidae":       ["#6b3a00", "#f8d8b8"],   // laranja-camarão
+  "Palinuridae":     ["#7b1a1a", "#f8c8c8"],   // vermelho-lagosta
 };
 
 function familiaTag(familia) {
@@ -1151,7 +1271,9 @@ function filteredData() {
   // Filtro por tipo (peixe / alga / todos)
   const base = state.filtroTipo === "all" ? TODOS
     : state.filtroTipo === "peixe" ? PEIXES
-    : ALGAS;
+    : state.filtroTipo === "alga" ? ALGAS
+    : state.filtroTipo === "cefalopode" ? CEFALOPODES
+    : CRUSTACEOS;
   let d = [...base];
 
   // Busca
@@ -1435,14 +1557,14 @@ function renderChart() {
 // ── BAR CHART ─────────────────────────────────────
 function renderBarChart() {
   const nutrient = state.chartNutrient;
-  const base = state.filtroTipo === "all" ? TODOS : state.filtroTipo === "peixe" ? PEIXES : ALGAS;
+  const base = state.filtroTipo === "all" ? TODOS : state.filtroTipo === "peixe" ? PEIXES : state.filtroTipo === "alga" ? ALGAS : state.filtroTipo === "cefalopode" ? CEFALOPODES : CRUSTACEOS;
   const all = [...base].sort((a, b) => b[nutrient] - a[nutrient]);
   const data = state.showAllBar ? all : all.slice(0, 15);
 
   // Update toggle button text
   const toggleBtn = document.getElementById("top15Toggle");
   if (toggleBtn) {
-    toggleBtn.textContent = state.showAllBar ? "Ver Top 15" : "Ver todas (62)";
+    toggleBtn.textContent = state.showAllBar ? "Ver Top 15" : `Ver todas (${base.length})`;
   }
 
   const labels  = data.map(d => d.nome);
@@ -1513,7 +1635,7 @@ function renderScatterChart() {
   if (!ctx) return;
 
   // Group by familia for datasets
-  const scatterBase = state.filtroTipo === "all" ? TODOS : state.filtroTipo === "peixe" ? PEIXES : ALGAS;
+  const scatterBase = state.filtroTipo === "all" ? TODOS : state.filtroTipo === "peixe" ? PEIXES : state.filtroTipo === "alga" ? ALGAS : state.filtroTipo === "cefalopode" ? CEFALOPODES : CRUSTACEOS;
   const familias = [...new Set(scatterBase.map(p => p.familia || "Outros"))];
   const datasets = familias.map(fam => {
     const pts = scatterBase.filter(p => (p.familia || "Outros") === fam)
@@ -1739,6 +1861,28 @@ function setupTipoBtns() {
 }
 
 
+// ── SETUP CARB SLIDERS ────────────────────────────
+function setupCarbSliders() {
+  const slMin = document.getElementById("carbSliderMin");
+  const slMax = document.getElementById("carbSliderMax");
+  const spMin = document.getElementById("carbValMin");
+  const spMax = document.getElementById("carbValMax");
+  if (!slMin) return;
+  const update = () => {
+    let lo = +slMin.value, hi = +slMax.value;
+    if (lo > hi) { [lo, hi] = [hi, lo]; slMin.value = lo; slMax.value = hi; }
+    spMin.textContent = lo + "g";
+    spMax.textContent = hi + "g";
+    state.carbMin = lo;
+    state.carbMax = hi;
+    state.page = 1;
+    renderTable();
+  };
+  slMin.addEventListener("input", update);
+  slMax.addEventListener("input", update);
+}
+
+
 // ── SETUP PROTEIN SLIDERS ─────────────────────────
 function setupProtSliders() {
   const sliderMin = document.getElementById("protSliderMin");
@@ -1834,6 +1978,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setupFamiliaSelect();
   setupFonteSelect();
   setupProtSliders();
+  setupCarbSliders();
   setupPagination();
   setupChartButtons();
   renderTable();

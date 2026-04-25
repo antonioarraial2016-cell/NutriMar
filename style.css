@@ -366,9 +366,9 @@ table { border-collapse: collapse; width: 100%; }
   background: var(--color-surface-2);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: var(--shadow-md);
 }
 table {
   min-width: 750px;
@@ -381,7 +381,6 @@ thead th {
   padding: var(--space-4) var(--space-5);
   text-align: center;
   white-space: nowrap;
-  position: sticky; top: 64px;
 }
 thead th:first-child { text-align: left; padding-left: var(--space-6); }
 thead th small {
@@ -876,6 +875,12 @@ tfoot .min-row td, tfoot .max-row td { font-size: var(--text-xs); opacity: 0.75;
 .card-hiperproteica { border-top-color: var(--color-accent, #00897b); }
 .card-omega3 { border-top-color: var(--color-blue); }
 .card-lightcal { border-top-color: var(--color-gold); }
+.card-crustaceos { border-top-color: #7b1a1a; }
+.card-crustaceos .dieta-icon { background: #f8d0d0; color: #7b1a1a; }
+.card-cefalopodes { border-top-color: #3d0050; }
+.card-cefalopodes .dieta-icon { background: #e8d0f0; color: #3d0050; }
+[data-theme='dark'] .card-crustaceos .dieta-icon { background: #3a0a0a; color: #f8c8c8; }
+[data-theme='dark'] .card-cefalopodes .dieta-icon { background: #200030; color: #e0b8f8; }
 
 /* Footer oceânico */
 .site-footer {
@@ -1013,4 +1018,80 @@ tfoot .min-row td, tfoot .max-row td { font-size: var(--text-xs); opacity: 0.75;
   font-weight: 700;
   font-size: 1.05rem;
   letter-spacing: -0.01em;
+}
+
+/* ── Separação visual cabeçalho × corpo da tabela ── */
+thead {
+  box-shadow: 0 3px 8px rgba(0,60,80,0.18);
+}
+thead tr {
+  border-bottom: 3px solid var(--color-primary-dark, #004a60);
+}
+tbody tr:first-child td {
+  padding-top: var(--space-4);
+}
+
+/* ── ITEM 7: Barra de rolagem horizontal visível e estilizada ── */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  position: relative;
+  /* Gradientes nas laterais para indicar scroll */
+  background:
+    linear-gradient(to right, var(--color-surface) 0%, transparent 40px) left center / 40px 100% no-repeat,
+    linear-gradient(to left,  var(--color-surface) 0%, transparent 40px) right center / 40px 100% no-repeat;
+  background-attachment: local, local;
+}
+.table-wrapper::-webkit-scrollbar {
+  height: 10px;
+}
+.table-wrapper::-webkit-scrollbar-track {
+  background: var(--color-primary-light);
+  border-radius: 10px;
+  margin: 0 8px;
+}
+.table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+  border-radius: 10px;
+  border: 2px solid var(--color-primary-light);
+}
+.table-wrapper::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-hover);
+}
+/* Firefox */
+.table-wrapper {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) var(--color-primary-light);
+}
+/* Indicadores visuais de scroll nas bordas */
+.table-scroll-hint {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  padding: 4px 0 8px;
+  letter-spacing: 0.03em;
+}
+
+/* ── FOOTER: Patrocinador, contato e contador ── */
+.footer-sponsor {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #26c6b0;
+  letter-spacing: 0.01em;
+}
+.footer-contact {
+  margin-top: 8px;
+  font-size: 0.88rem;
+}
+.footer-contact a {
+  color: #40b4d8;
+  text-decoration: none;
+}
+.footer-contact a:hover {
+  text-decoration: underline;
+  color: #fff;
+}
+#visitor-counter {
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
